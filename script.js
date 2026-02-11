@@ -92,14 +92,33 @@ function displayWordBank() {
 }
 
 function addWord() {
-    const input = document.getElementById('newWord');
-    const word = input.value.trim().toUpperCase();
+    const input = document.getElementById("newWord");
+    const word = input.value.trim();
+
+    // empty check
+    if (word === "") {
+        alert("Word cannot be empty.");
+        return;
+    }
+
+    // uppercase A-Z only
+    if (!/^[A-Z]+$/.test(word)) {
+        alert("Only uppercase letters A-Z are allowed.");
+        return;
+    }
+
+    // duplicate check
+    if (wordBank.includes(word)) {
+        alert("Duplicate words are not allowed.");
+        return;
+    }
 
     wordBank.push(word);
-    input.value = '';
     saveWordBank();
-    displayWordBank();
+    renderWordBank();
+    input.value = "";
 }
+
 
 function editWord(index) {
     const newWord = prompt('Edit word:', wordBank[index]);
