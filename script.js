@@ -121,13 +121,31 @@ function addWord() {
 
 
 function editWord(index) {
-    const newWord = prompt('Edit word:', wordBank[index]);
-    if (newWord) {
-        wordBank.splice(index, 1);
-        saveWordBank();
-        displayWordBank();
+    const newWordRaw = prompt("Edit word:", wordBank[index]);
+    if (newWordRaw === null) return; 
+
+    const newWord = newWordRaw.trim().toUpperCase();
+
+    if (newWord === "") {
+        alert("Word cannot be empty.");
+        return;
     }
+
+    if (!/^[A-Z]+$/.test(newWord)) {
+        alert("Only letters A-Z are allowed.");
+        return;
+    }
+
+    if (wordBank.includes(newWord) && newWord !== wordBank[index]) {
+        alert("Duplicate words are not allowed.");
+        return;
+    }
+
+    wordBank[index] = newWord;   // edit and don’t delete
+    saveWordBank();
+    displayWordBank();
 }
+
 
 function deleteWord(index) {
     if (confirm('Are you sure you want to delete this word?')) {
