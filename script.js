@@ -277,7 +277,7 @@ function updateLives() {
 function updateHangman() {
     const parts = ['head', 'body', 'leftArm', 'rightArm', 'leftLeg', 'rightLeg'];
     
-    const wrongOrder = ['head', 'leftArm', 'rightArm', 'body', 'leftLeg', 'rightLeg'];
+    const wrongOrder = ['head', 'body', 'leftArm', 'rightArm', 'leftLeg', 'rightLeg'];
     const partIndex = gameState.wrongGuesses - 1;
     
     if (partIndex >= 0 && partIndex < wrongOrder.length) {
