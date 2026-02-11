@@ -135,7 +135,7 @@ function generateKeyboard() {
 function startGame() {
     const p1Name = document.getElementById('player1Name').value.trim();
     const p2Name = document.getElementById('player2Name').value.trim();
-    // here we will validtae 
+    // here we will validate
     if (p1Name === "" || p2Name === "") {
         alert("Names cant be empty .Please enter names for both players.");
         return;
