@@ -135,6 +135,16 @@ function generateKeyboard() {
 function startGame() {
     const p1Name = document.getElementById('player1Name').value.trim();
     const p2Name = document.getElementById('player2Name').value.trim();
+    // here we will validtae 
+    if (p1Name === "" || p2Name === "") {
+        alert("Names cant be empty .Please enter names for both players.");
+        return;
+    }
+
+    if (p1Name === p2Name) {
+        alert("Names are the same .Player names must be different.");
+        return;
+    }
     
     gameState.player1.name = p1Name || 'Player 1';
     gameState.player2.name = p2Name || 'Player 2';
